@@ -1,5 +1,4 @@
-FROM alpine:3.5
-MAINTAINER Daisuke Nakano
+FROM alpine:3.6
 
 ENV UNBOUND_VERSION '1.6.2'
 
