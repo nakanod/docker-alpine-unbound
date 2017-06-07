@@ -9,12 +9,11 @@ RUN apk add --update --no-cache gcc make linux-headers musl-dev libressl-dev exp
     cd unbound-${UNBOUND_VERSION} && \
     ./configure --disable-flto --disable-shared && make && make install && \
     apk del gcc make linux-headers musl-dev libressl-dev expat-dev curl && \
-    rm -fr /tmp/* && \
+    rm -fr /tmp/* /var/cache/apk/* && \
     adduser -h /home/unbound -s /sbin/nologin -D -H unbound
 
 COPY /unbound.conf /usr/local/etc/unbound/unbound.conf
 
 EXPOSE 53/udp 53/tcp
 
-#CMD ["/bin/sh"]
 CMD ["/usr/local/sbin/unbound"]
